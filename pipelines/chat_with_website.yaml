@@ -2,7 +2,7 @@ components:
   ddtracer:
     init_parameters:
       service: "datadog_haystack.test"
-    type: haystack_integrations.components.others.datadog.DDTracerComponent
+    type: haystack_integrations.components.others.datadog.ddtracer.DDTracerComponent
 
   converter:
     init_parameters:
