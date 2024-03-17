@@ -8,11 +8,12 @@ import ddtrace
 class DDTracerComponent:
     def __init__(self, service: str):
         tracer = ddtrace.tracer
-        tracer.service = service
+        ddtrace.config.service = service
         haystack.tracing.enable_tracing(DatadogTracer(tracer))
+        haystack.tracing.tracer.is_content_tracing_enabled = True
 
         self.service = service
 
-    @component.output_types(dummy=str)
+    @component.output_types(service=str)
     def run(self):
-        return {"dummy": ""}
+        return {"service": self.service}
